@@ -141,7 +141,7 @@ def _is_voice(value: Optional[str]) -> bool:
 
 out_path = Path(__file__).parent
 cpu_model = KModel(repo_id=REPO_ID).to("cpu").eval()
-gpu_model = KModel(repo_id=REPO_ID).to("cuda").eval()
+gpu_model = KModel(repo_id=REPO_ID).to("cuda").eval() if CUDA_AVAILABLE else None
 
 en_pipeline = KPipeline(lang_code="a", repo_id=REPO_ID, model=False)
 
